@@ -8,9 +8,11 @@
 // Execute `rustlings hint vecs2` or use the `hint` watch subcommand for a hint.
 
 fn vec_loop(mut v: Vec<i32>) -> Vec<i32> {
+    // v.iter_mutはvの要素へのミュータブルな参照(&mut)
     for element in v.iter_mut() {
         // TODO: Fill this up so that each element in the Vec `v` is
         // multiplied by 2.
+        // mutな操作(書き込み)時には自動デリファレンスしてくれない
         *element = *element * 2
     }
 
@@ -23,7 +25,8 @@ fn vec_map(v: &Vec<i32>) -> Vec<i32> {
         .map(|element| {
             // TODO: Do the same thing as above - but instead of mutating the
             // Vec, you can just return the new number!
-            *element * 2
+            // elementは&i32でi32との乗算時にコンパイラが自動的にデリファレンスする
+            element * 2
         })
         .collect()
 }
