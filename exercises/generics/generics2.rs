@@ -6,14 +6,13 @@
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
-struct Wrapper {
-    value: u32,
+struct Wrapper<T> {
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+//implの直後にTを宣言しなければならないことに注意してください。こうすることで、型Point<T>にメソッドを実装していることを指定するために、Tを使用することができます。 implの後にTをジェネリックな型として宣言することで、コンパイラは、Pointの山カッコ内の型が、 具体的な型ではなくジェネリックな型であることを認識できるのです。 from The Rust Programming Language
+impl<T> Wrapper<T> {
+    pub fn new(value: T) -> Self {
         Wrapper { value }
     }
 }
